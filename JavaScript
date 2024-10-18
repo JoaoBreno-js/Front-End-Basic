@@ -1,0 +1,129 @@
+JavaScript Main & References :
+MAIN :
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.body.classList.add("fade-in");
+
+  const navButton = document.getElementById("navButton");
+  const dropdownMenu = document.getElementById("dropdownMenu");
+  const ctaButton = document.querySelector(".cta-button");
+  const originalText = ctaButton.textContent; // Armazena o texto original
+  let typingInterval; // Variável para armazenar o intervalo de digitação
+  let isTyping = false; // Flag para verificar se está digitando
+
+  // Exibir o menu ao passar o mouse no botão
+  navButton.addEventListener("mouseenter", () => {
+    dropdownMenu.classList.add("show");
+  });
+
+  navButton.addEventListener("mouseleave", () => {
+    dropdownMenu.classList.remove("show");
+  });
+
+  // Manter o menu visível ao passar o mouse
+  dropdownMenu.addEventListener("mouseenter", () => {
+    dropdownMenu.classList.add("show");
+  });
+
+  dropdownMenu.addEventListener("mouseleave", () => {
+    dropdownMenu.classList.remove("show");
+  });
+
+  // Efeito de digitação no botão ao passar o mouse
+  ctaButton.addEventListener("mouseenter", () => {
+    if (!isTyping) {
+      ctaButton.classList.add("animate-button");
+      typeEffect(ctaButton, "Quero mudar de vida!", 50);
+    }
+  });
+
+  ctaButton.addEventListener("mouseleave", () => {
+    if (!isTyping) {
+      ctaButton.classList.remove("animate-button");
+      typeEffect(ctaButton, originalText, 50);
+    }
+  });
+
+  // Suavizar a rolagem para a seção de vendas
+  ctaButton.addEventListener("click", (e) => {
+    e.preventDefault(); // Previne o comportamento padrão do link
+    const targetId = ctaButton.getAttribute("href");
+    const targetElement = document.querySelector(targetId);
+
+    if (targetElement) {
+      const targetPosition =
+        targetElement.getBoundingClientRect().top + window.pageYOffset;
+      const startPosition = window.pageYOffset;
+      const distance = targetPosition - startPosition;
+      const duration = 1000; // Duração em milissegundos
+      let start = null;
+
+      const animateScroll = (timestamp) => {
+        if (!start) start = timestamp;
+        const progress = timestamp - start;
+        const scrollY = easeInOutCubic(
+          progress,
+          startPosition,
+          distance,
+          duration
+        );
+        window.scrollTo(0, scrollY);
+
+        if (progress < duration) {
+          requestAnimationFrame(animateScroll);
+        }
+      };
+
+      requestAnimationFrame(animateScroll);
+    }
+  });
+
+  // Função de easing para uma rolagem suave
+  function easeInOutCubic(t, b, c, d) {
+    t /= d / 2;
+    if (t < 1) return (c / 2) * t * t * t + b;
+    t -= 2;
+    return (c / 2) * (t * t * t + 2) + b;
+  }
+
+  // Função de efeito de digitação
+  function typeEffect(element, text, delay) {
+    let i = 0;
+    element.textContent = ""; // Limpa o texto atual
+    isTyping = true; // Marca que está digitando
+
+    typingInterval = setInterval(() => {
+      if (i < text.length) {
+        element.textContent += text.charAt(i);
+        i++;
+      } else {
+        clearInterval(typingInterval);
+        isTyping = false; // Marca que terminou de digitar
+      }
+    }, delay);
+  }
+});
+ 
+<!---REFERENCES: --->
+
+document.addEventListener("DOMContentLoaded", () => {
+  const referenceItems = document.querySelectorAll(".reference-item");
+
+  const handleScroll = () => {
+    const windowHeight = window.innerHeight;
+
+    referenceItems.forEach((item) => {
+      const rect = item.getBoundingClientRect();
+
+      // Verifica se o item está visível na viewport
+      if (rect.top > windowHeight || rect.bottom < 0) {
+        item.style.opacity = "0"; // Torna invisível
+      } else {
+        item.style.opacity = "1"; // Torna visível
+      }
+    });
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  handleScroll(); // Executa uma vez para definir a visibilidade no carregamento
+});
