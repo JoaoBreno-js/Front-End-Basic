@@ -1,0 +1,306 @@
+CSS MAIN & REFERENCES :
+MAIN:
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  min-height: 100vh;
+  background-color: #121212;
+  color: white;
+  opacity: 0;
+  transition: opacity 1.9s ease;
+  font-family: "JetBrains Mono", monospace;
+}
+
+.fade-in {
+  opacity: 1;
+}
+
+/* Estilo do menu */
+.menu {
+  background: #1e1e1e;
+  padding: 5px 15px; /* Ajuste a altura total do menu aqui */
+  display: flex;
+  align-items: center; /* Alinha itens verticalmente ao centro */
+  position: relative;
+  z-index: 10;
+}
+.menu-nav {
+  position: relative; /* Permite o posicionamento absoluto do dropdown */
+}
+
+.nav {
+  padding: 10px; /* Área de clique do botão hamburguer */
+  font-size: 30px; /* Aumenta o tamanho do ícone */
+  background: none; /* Remove o fundo padrão do botão */
+  border: none; /* Remove a borda do botão */
+  cursor: pointer; /* Muda o cursor para indicar que é clicável */
+  color: white; /* Cor do texto do botão */
+  transition: transform 0.2s; /* Efeito suave para transformação */
+}
+
+.nav:hover {
+  transform: scale(1.1); /* Aumenta um pouco o tamanho ao passar o mouse */
+}
+
+/* Centraliza a logo */
+.menu-info {
+  flex: 1; /* Permite que essa div ocupe o espaço restante */
+  text-align: center; /* Centraliza o texto */
+}
+
+.menu-info h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+}
+
+/* Dropdown */
+.dropdown {
+  display: none; /* Oculta o menu por padrão */
+  position: absolute;
+  background: #1e1e1e;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  z-index: 9;
+  margin-top: 70px; /* Espaço acima do dropdown */
+}
+
+.dropdown.show {
+  display: block; /* Exibe o dropdown quando a classe 'show' é adicionada */
+}
+
+/* Links do dropdown */
+.dropdown a {
+  display: block; /* Faz com que cada link ocupe uma linha */
+  padding: 10px; /* Espaçamento interno para cada link */
+  color: white; /* Cor do texto */
+  text-decoration: none; /* Remove o sublinhado */
+}
+
+.dropdown a:hover {
+  background-color: #ff4500; /* Cor de fundo ao passar o mouse */
+}
+
+/* Hero section */
+.hero-section {
+  text-align: center;
+  padding: 148.9px 20px; /* Aumenta o padding superior e inferior */
+  background-color: #1a1a1a;
+  color: white;
+}
+
+.hero-section h2 {
+  font-size: 3rem; /* Aumenta o tamanho do título */
+  margin-bottom: 30px; /* Aumenta o espaço abaixo do título */
+}
+
+.hero-section p {
+  font-size: 1.5rem; /* Aumenta o tamanho do parágrafo */
+  margin-bottom: 60px; /* Aumenta o espaço abaixo do parágrafo */
+}
+
+.cta-button {
+  background-color: #ff4500; /* Cor de fundo normal */
+  color: white; /* Cor do texto normal */
+  padding: 20px 40px; /* Tamanho do botão */
+  border-radius: 25px; /* Bordas arredondadas */
+  text-transform: uppercase; /* Texto em maiúsculas */
+  text-decoration: none; /* Remove sublinhado */
+  font-weight: bold; /* Negrito */
+  transition: background-color 1.5s ease, color 1.5s ease; /* Transição suave de 0.5s */
+}
+
+.cta-button:hover {
+  background-color: white; /* Cor de fundo ao passar o mouse */
+  color: #ff4500; /* Cor do texto ao passar o mouse */
+}
+
+/* Seção de vendas */
+.sales-section {
+  padding: 60px 20px;
+  background-color: #fff;
+  color: #000;
+  text-align: center;
+}
+
+.sales-section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.product-item {
+  background-color: #f7f7f7;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.product-item img {
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.product-button {
+  display: block;
+  margin: 20px 0;
+  padding: 10px 20px;
+  background-color: #007acc;
+  color: white;
+  text-align: center;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.product-button:hover {
+  background-color: #005f99;
+}
+
+/* Footer */
+.footer {
+  background-color: #1e1e1e;
+  color: #ccc;
+  padding: 20px;
+  text-align: center;
+}
+
+/* Adicione estas classes ao seu CSS */
+.button-shrink {
+  transition: transform 0.3s ease; /* Suaviza a transformação */
+  transform: scale(0.9); /* Encolhe o botão */
+}
+
+.button-grow {
+  transition: transform 0.3s ease; /* Suaviza a transformação */
+  transform: scale(1.1); /* Aumenta o botão */
+}
+
+/* Adicione a classe de botão normal */
+.cta-button {
+  transition: color 0.3s ease; /* Suaviza a mudança de cor */
+}
+
+REFERENCES:
+
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  line-height: 1.15;
+}
+
+/* Estilo do body */
+body {
+  font-family: "JetBrains Mono", monospace;
+  background-color: #121212; /* Cor de fundo da página */
+  color: white; /* Cor do texto */
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Estilo do menu */
+.menu {
+  background: #1e1e1e;
+  padding: 15px;
+  display: flex;
+  justify-content: center; /* Alinha o conteúdo ao centro */
+  position: relative;
+  z-index: 10;
+}
+
+.menu-info a {
+  text-decoration: none;
+}
+
+.menu-info {
+  text-align: center; /* Centraliza o texto dentro do div */
+  flex: 1; /* Faz o menu-info ocupar todo o espaço disponível */
+}
+
+.menu-info h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: white;
+  margin: 0; /* Remove margens do h1 */
+}
+
+/* Estilo da seção de referências */
+.references-section {
+  padding: 60px 20px;
+  text-align: center; /* Centraliza o texto */
+  background-color: #1a1a1a; /* Cor de fundo */
+}
+
+.references-section h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.references-section p {
+  font-size: 1rem; /* Reduzido para ocupar menos espaço */
+  margin-bottom: 40px;
+  color: #ccc; /* Cor do texto mais claro para descrição */
+}
+
+/* Estilo da lista de referências */
+.references-list {
+  display: flex;
+  flex-direction: column; /* Mantém os itens empilhados */
+  align-items: center; /* Centraliza os itens */
+}
+
+.reference-item {
+  background-color: #2a2a2a; /* Fundo mais claro para os itens */
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  width: 90%; /* Largura dos itens ajustada */
+  max-width: 600px; /* Largura máxima para não esticar demais */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  transition: opacity 2.5s ease, transform 0.3s ease; /* Transição para opacidade e transformação */
+  opacity: 1; /* Inicia visível */
+}
+
+.reference-item strong {
+  font-size: 1.5rem; /* Aumenta o tamanho do nome do curso */
+  color: #ff4500; /* Cor laranja para destaque */
+}
+
+/* Estilo do footer */
+.footer {
+  background-color: #1e1e1e;
+  color: #ccc;
+  padding: 20px;
+  text-align: center;
+  margin-top: auto; /* Faz o footer ficar na parte inferior */
+}
+
+.reference-item:hover {
+  transform: scale(1.05); /* Cresce um pouco ao passar o mouse */
+  z-index: 1; /* Eleva o item em relação aos outros */
+}
